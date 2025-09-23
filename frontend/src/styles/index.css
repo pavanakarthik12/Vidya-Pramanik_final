@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root variables */
+:root {
+  --bg: #0b0f14;
+}
+
+/* Full height setup */
+html, body, #root {
+  height: 100%;
+}
+
+/* Body styling */
+body {
+  @apply bg-gradient-to-tr from-blue-100 via-white to-blue-300 
+         dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 
+         text-gray-900 dark:text-gray-100 
+         min-h-screen font-sans font-bold tracking-wide;
+}
+
+/* Card component */
+.card {
+  @apply rounded-3xl border-2 border-blue-600 dark:border-blue-400 
+         bg-white/90 dark:bg-gray-800/90 
+         shadow-2xl p-8 mb-8 
+         transition-all duration-200;
+}
+
+/* Button base */
+.btn {
+  @apply inline-flex items-center justify-center 
+         rounded-full px-6 py-3 
+         text-lg font-bold uppercase tracking-wide 
+         transition-all duration-150 
+         border-2 border-blue-600 dark:border-blue-400 
+         shadow-lg 
+         focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+/* Primary button */
+.btn-primary {
+  @apply btn bg-blue-600 text-white 
+         hover:bg-blue-700 focus:ring-blue-700 
+         shadow-xl;
+}
+
+/* Secondary button */
+.btn-secondary {
+  @apply btn bg-gray-100 dark:bg-gray-700 
+         hover:bg-blue-200 dark:hover:bg-blue-900 
+         text-gray-700 dark:text-gray-200 
+         border-blue-600 dark:border-blue-400;
+}
+
+/* Input fields */
+.input {
+  @apply w-full rounded-xl border-2 border-blue-600 dark:border-blue-400 
+         bg-white dark:bg-gray-800 
+         px-5 py-3 
+         focus:outline-none focus:ring-2 focus:ring-blue-500 
+         text-lg font-semibold;
+}
+
+/* Labels */
+.label {
+  @apply text-lg font-bold mb-3 block 
+         text-blue-700 dark:text-blue-200 tracking-wide;
+}

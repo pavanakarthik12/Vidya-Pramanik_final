@@ -1,0 +1,127 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String   @id @default(cuid())
+  email          String   @unique
+  passwordHash   String
+  role           String   // 'ADMIN' | 'VERIFIER'
+  issuerId       String?
+  verifierOrgId  String?
+  issuer         Issuer?  @relation(fields: [issuerId], references: [id])
+  verifierOrg    VerifierOrg? @relation(fields: [verifierOrgId], references: [id])
+  createdAt      DateTime @default(now())
+  AuditLog       AuditLog[]
+  VerificationResult VerificationResult[] @relation("VerificationUser")
+}
+
+model Issuer {
+  id            String   @id @default(cuid())
+  name          String
+  publicKeyPem  String
+  privateKeyPem String
+  createdAt     DateTime @default(now())
+  users         User[]
+  certificates  Certificate[]
+}
+
+model VerifierOrg {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  users     User[]
+}
+
+model Certificate {
+  id             String   @id // docId
+  issuerId       String
+  issuer         Issuer   @relation(fields: [issuerId], references: [id])
+  studentId      String?
+  student        Student? @relation(fields: [studentId], references: [id])
+  // legacy fields (kept for compatibility)
+  fileUrl        String
+  hash           String
+  signature      String
+  issuedAt       DateTime @default(now())
+  meta           String   // JSON string
+  // new fields per blockchain integration
+  ownerId        String?
+  title          String?
+  issuedAtUnix   Int      @default(0)
+  sha256Hex      String   @default("")
+  issuerAddress  String?
+  signatureHex   String?
+  status         String   @default("active")
+  reason         String?
+  r2Key          String   @default("")
+  txHash         String?
+  blockNumber    Int?
+  chain          String?
+  explorerUrl    String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  verificationEvents VerificationEvent[]
+  @@index([studentId])
+}
+
+model ChainRecord {
+  id        String   @id @default(cuid())
+  docId     String   @unique
+  data      String   // JSON string
+  recordedAt DateTime @default(now())
+}
+
+model VerificationResult {
+  id        String   @id @default(cuid())
+  docId     String
+  status    String   // 'PASS' | 'FAIL'
+  reasons   String   // JSON stringified array of reasons
+  checkedAt DateTime @default(now())
+  verifierUserId String?
+  verifier  User?    @relation("VerificationUser", fields: [verifierUserId], references: [id])
+}
+
+model VerificationEvent {
+  id              String   @id @default(cuid())
+  certificateId   String
+  certificate     Certificate @relation(fields: [certificateId], references: [id])
+  studentId       String?
+  student         Student? @relation("StudentVerificationEvents", fields: [studentId], references: [id])
+  by              String
+  result          String   // 'pass' | 'fail' | 'revoked'
+  hashMatch       Boolean
+  issuerVerified  Boolean
+  mlSummary       String?  // JSON string
+  details         String?  // JSON string
+  atUnix          Int
+  createdAt       DateTime @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String   // 'UPLOAD' | 'VERIFY'
+  userId    String
+  role      String   // 'ADMIN' | 'VERIFIER'
+  refType   String
+  refId     String
+  details   String   // JSON string
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Student {
+  id             String   @id @default(cuid())
+  email          String   @unique
+  passwordHash   String
+  name           String?
+  phone          String?
+  createdAt      DateTime @default(now())
+  certificates   Certificate[]
+  verificationEvents VerificationEvent[] @relation("StudentVerificationEvents")
+}
