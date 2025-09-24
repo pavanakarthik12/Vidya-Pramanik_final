@@ -115,7 +115,17 @@ export default function LoginPage() {
 
   if (showRegistry) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 flex items-center justify-center p-6">
+      <div 
+        className="min-h-screen w-full flex items-center justify-center p-6"
+        style={{
+          backgroundColor: '#5a1d0c',
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '20px 20px'
+        }}
+      >
         <div className="w-full max-w-md">
           <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 p-8">
             <div className="text-center mb-8">
@@ -228,7 +238,17 @@ export default function LoginPage() {
 
   if (showLogin) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 flex items-center justify-center p-6">
+      <div 
+        className="min-h-screen w-full flex items-center justify-center p-6"
+        style={{
+          backgroundColor: '#5a1d0c',
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '20px 20px'
+        }}
+      >
         <div className="w-full max-w-md">
           <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 p-8">
             <div className="text-center mb-8">
@@ -344,7 +364,17 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 flex items-center justify-center p-6">
+    <div 
+      className="min-h-screen w-full flex items-center justify-center p-6"
+      style={{
+        backgroundColor: '#5a1d0c',
+        backgroundImage: `
+          linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+        `,
+        backgroundSize: '20px 20px'
+      }}
+    >
       <div className="w-full max-w-4xl">
         {/* Floating geometric shapes for visual interest */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -361,16 +391,16 @@ export default function LoginPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
               </svg>
             </div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600 bg-clip-text text-transparent">
-              Vidya <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">प्रमाणिक</span>
+            <h1 className="text-4xl font-bold text-amber-100">
+              Vidya <span className="text-orange-300">प्रमाणिक</span>
             </h1>
           </div>
           <div className="space-y-4">
-            <h2 className="text-2xl font-semibold text-slate-700">Welcome to the Future of</h2>
-            <h3 className="text-5xl font-bold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 bg-clip-text text-transparent">
+            <h2 className="text-2xl font-semibold text-amber-100">Welcome to the Future of</h2>
+            <h3 className="text-5xl font-bold bg-gradient-to-r from-amber-200 via-orange-200 to-yellow-200 bg-clip-text text-transparent">
               Credential Verification
             </h3>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-amber-200 text-lg max-w-2xl mx-auto leading-relaxed">
               Secure, blockchain-powered certificate verification system. Choose your role to get started.
             </p>
           </div>
@@ -445,7 +475,7 @@ export default function LoginPage() {
         {/* Additional Options */}
         <div className="text-center relative z-10">
           <div className="inline-block p-6 bg-white/60 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg">
-            <p className="text-slate-600 text-sm mb-4">Need to register a new educational institution?</p>
+            <p className="text-amber-100 text-sm mb-4">Need to register a new educational institution?</p>
             <button 
               onClick={() => setShowRegistry(true)}
               className="group inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-medium rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
@@ -469,8 +499,8 @@ export default function LoginPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <h4 className="font-semibold text-slate-800 mb-1">Blockchain Secured</h4>
-            <p className="text-slate-600 text-sm">Immutable and tamper-proof verification</p>
+            <h4 className="font-semibold text-amber-100 mb-1">Blockchain Secured</h4>
+            <p className="text-amber-200 text-sm">Immutable and tamper-proof verification</p>
           </div>
           <div className="text-center p-4">
             <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-lg flex items-center justify-center mx-auto mb-3">
@@ -478,8 +508,8 @@ export default function LoginPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <h4 className="font-semibold text-slate-800 mb-1">Instant Verification</h4>
-            <p className="text-slate-600 text-sm">Real-time credential validation</p>
+            <h4 className="font-semibold text-amber-100 mb-1">Instant Verification</h4>
+            <p className="text-amber-200 text-sm">Real-time credential validation</p>
           </div>
           <div className="text-center p-4">
             <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg flex items-center justify-center mx-auto mb-3">
@@ -487,8 +517,8 @@ export default function LoginPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9V3" />
               </svg>
             </div>
-            <h4 className="font-semibold text-slate-800 mb-1">Global Access</h4>
-            <p className="text-slate-600 text-sm">Worldwide credential recognition</p>
+            <h4 className="font-semibold text-amber-100 mb-1">Global Access</h4>
+            <p className="text-amber-200 text-sm">Worldwide credential recognition</p>
           </div>
         </div>
       </div>
